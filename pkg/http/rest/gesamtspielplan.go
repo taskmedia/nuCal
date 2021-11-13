@@ -11,6 +11,15 @@ import (
 
 func addRouterGesamtspielplan(engine *gin.Engine) {
 	engine.POST("/rest/v1/gesamtspielplan", func(c *gin.Context) {
+		// validate request Content-Type
+		contentType := c.Request.Header.Get("Content-Type")
+		if contentType != "application/json" {
+			msg := "Expected 'application/json' as content type"
+			log.WithField("content-type", contentType).Warning(msg)
+			c.String(http.StatusBadRequest, msg)
+			return
+		}
+
 		var matches sport.Matches
 
 		if err := c.ShouldBindJSON(&matches); err != nil {
