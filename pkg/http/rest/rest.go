@@ -18,5 +18,8 @@ func SetupRouter() *gin.Engine {
 		return
 	})
 
+	// add routes to Engine
+	addRouterGesamtspielplan(r)
+
 	return r
 }
