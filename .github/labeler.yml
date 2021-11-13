@@ -1,0 +1,12 @@
+# add 'documentation' label to any changes in docs directory
+documentation:
+  - "README.md"
+
+# add 'test' label to any changes related to go test
+test:
+  - "**/*_test.go"
+
+# add 'docker' label to any changes related to docker
+docker:
+  - Dockerfile
+  - docker-compose.yml
