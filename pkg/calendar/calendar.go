@@ -8,6 +8,7 @@ import (
 	"github.com/taskmedia/nuScrape/pkg/sport"
 )
 
+// ConvertGesamtspielplanToCalendar will convert a Gesamtspielplan struct into a calendar
 func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar {
 	c := ical.NewCalendar()
 

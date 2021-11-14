@@ -6,9 +6,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
+	"github.com/taskmedia/nuCal/pkg/calendar"
 	"github.com/taskmedia/nuScrape/pkg/sport"
 )
 
+// addRouterGesamtspielplan will add a REST endpoint to generate ICS / iCal files from a Gesamtspielplan
 func addRouterGesamtspielplan(engine *gin.Engine) {
 	engine.POST("/rest/v1/gesamtspielplan", func(c *gin.Context) {
 		// validate request Content-Type
@@ -29,7 +31,8 @@ func addRouterGesamtspielplan(engine *gin.Engine) {
 			return
 		}
 
-		fmt.Println(gsp)
+		cal := calendar.ConvertGesamtspielplanToCalendar(gsp)
+		fmt.Println(cal.Serialize())
 
 		c.String(http.StatusAccepted, "not yet implemented")
 	})
