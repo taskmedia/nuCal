@@ -10,6 +10,7 @@ require (
 )
 
 require (
+	github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
@@ -27,5 +28,5 @@ require (
 	golang.org/x/sys v0.0.0-20210423082822-04245dca01da // indirect
 	google.golang.org/protobuf v1.24.0 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )
