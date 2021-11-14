@@ -20,16 +20,16 @@ func addRouterGesamtspielplan(engine *gin.Engine) {
 			return
 		}
 
-		var matches sport.Matches
+		var gsp sport.Gesamtspielplan
 
-		if err := c.ShouldBindJSON(&matches); err != nil {
+		if err := c.ShouldBindJSON(&gsp); err != nil {
 			msg := "The payload could not be binded to Matches object"
 			log.WithField("gin.context", c).Warning(msg)
 			c.String(http.StatusBadRequest, msg)
 			return
 		}
 
-		fmt.Println(matches)
+		fmt.Println(gsp)
 
 		c.String(http.StatusAccepted, "not yet implemented")
 	})
