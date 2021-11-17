@@ -81,6 +81,8 @@ github.com/taskmedia/nuScrape v1.0.3 h1:OaeLG186uuayXsax/7A6msgqIf+9qkckf2m+Qnb8
 github.com/taskmedia/nuScrape v1.0.3/go.mod h1:ZSigyqOsGu6kdEJfSdurcGwpg455CU6yFXXZ78KrP3M=
 github.com/taskmedia/nuScrape v1.1.0 h1:YDJRoq/TdFTX62JsPmp19y/oatQPyjjmdJoiMPpDK/0=
 github.com/taskmedia/nuScrape v1.1.0/go.mod h1:ZSigyqOsGu6kdEJfSdurcGwpg455CU6yFXXZ78KrP3M=
+github.com/taskmedia/nuScrape v1.1.1 h1:SmR47yDCFoU7jZDPLqd9zZW6Qq49TGTzKSAR0jNTJSI=
+github.com/taskmedia/nuScrape v1.1.1/go.mod h1:ZSigyqOsGu6kdEJfSdurcGwpg455CU6yFXXZ78KrP3M=
 github.com/temoto/robotstxt v1.1.2/go.mod h1:+1AmkuG3IYkh1kv0d2qEB9Le88ehNO0zwOr3ujewlOo=
 github.com/ugorji/go v1.1.7 h1:/68gy2h+1mWMrwZFeD1kQialdSzAb432dtpeJ42ovdo=
 github.com/ugorji/go v1.1.7/go.mod h1:kZn38zHttfInRq0xu/PH0az30d+z6vm202qpg1oXVMw=
