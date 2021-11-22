@@ -19,14 +19,24 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 	c.SetProductId(cUid)
 	c.SetXWRCalID(cUid)
 
-	cName := fmt.Sprintf("%s (%d)",
+	cName := fmt.Sprintf("Handball: %s (%s %s %s)",
+		gsp.AgeCategory.GetAbbreviation(),
 		gsp.Championship,
-		gsp.Group)
+		gsp.Class.GetAbbreviation(),
+		gsp.Relay.GetAbbreviation(),
+	)
+
 	c.SetName(cName)
 	c.SetXWRCalName(cName)
 
-	c.SetDescription("Handballkalender")
-	c.SetRefreshInterval("Handballkalender")
+	cDesc := fmt.Sprintf("Handballkalender %s für die Spielklasse %s %s %s der Saison %s",
+		gsp.AgeCategory.GetName(),
+		gsp.Championship,
+		gsp.Class.GetName(),
+		gsp.Relay.GetName(),
+		gsp.Season,
+	)
+	c.SetDescription(cDesc)
 
 	c.SetMethod(ical.MethodPublish)
 
@@ -40,7 +50,20 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 			m.Id)
 		e := c.AddEvent(uid + "@nucal.task.media")
 
-		e.SetSummary(m.Team.Home + " - " + m.Team.Guest)
+		eName := fmt.Sprintf("%s (%s %s %s): %s - %s",
+			gsp.AgeCategory.GetAbbreviation(),
+			gsp.Championship,
+			gsp.Class.GetAbbreviation(),
+			gsp.Relay.GetAbbreviation(),
+			m.Team.Home,
+			m.Team.Guest,
+		)
+
+		// add goals if available
+		if m.Goal.Home != -1 {
+			eName += fmt.Sprintf(" (%d:%d)", m.Goal.Home, m.Goal.Guest)
+		}
+		e.SetSummary(eName)
 		e.SetModifiedAt(time.Now())
 		e.SetStartAt(m.Date)
 		e.SetEndAt(m.Date.Add(gameDuration))
