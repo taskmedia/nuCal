@@ -3,14 +3,14 @@ module github.com/taskmedia/nuCal
 go 1.17
 
 require (
+	github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac
 	github.com/gin-gonic/gin v1.7.4
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
-	github.com/taskmedia/nuScrape v1.1.1
+	github.com/taskmedia/nuScrape v1.1.3
 )
 
 require (
-	github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
