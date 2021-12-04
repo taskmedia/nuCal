@@ -81,6 +81,8 @@ github.com/stretchr/testify v1.7.0 h1:nwc3DEeHmmLAfoZucVR881uASk0Mfjw8xYJ99tb5Cc
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/taskmedia/nuScrape v1.1.3 h1:CplobUNY21PEQ+AKez3Ja3ClS/dgO80YFMncmI+287c=
 github.com/taskmedia/nuScrape v1.1.3/go.mod h1:ZSigyqOsGu6kdEJfSdurcGwpg455CU6yFXXZ78KrP3M=
+github.com/taskmedia/nuScrape v1.1.4 h1:eixTREJH2wBb2tjdoiFrAEDMfu+LjGaDFnCA6tSGetM=
+github.com/taskmedia/nuScrape v1.1.4/go.mod h1:6JKmavSFNrb7XDNrS9ffjFdVvBUUR2HIuH/4w7sN5MQ=
 github.com/temoto/robotstxt v1.1.2/go.mod h1:+1AmkuG3IYkh1kv0d2qEB9Le88ehNO0zwOr3ujewlOo=
 github.com/ugorji/go v1.1.7 h1:/68gy2h+1mWMrwZFeD1kQialdSzAb432dtpeJ42ovdo=
 github.com/ugorji/go v1.1.7/go.mod h1:kZn38zHttfInRq0xu/PH0az30d+z6vm202qpg1oXVMw=
