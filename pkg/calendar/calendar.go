@@ -42,6 +42,8 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 
 	gameDuration := time.Duration(float64(time.Hour) * 1.5)
 
+	gspDesc := gsp.GetDescription()
+
 	for _, m := range gsp.Matches {
 		uid := fmt.Sprintf("%s-%s-%d-%d",
 			gsp.Season,
@@ -68,7 +70,7 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 		e.SetStartAt(m.Date)
 		e.SetEndAt(m.Date.Add(gameDuration))
 
-		e.SetDescription(gsp.GetDescription() + "\n" + m.GetDescription())
+		e.SetDescription(gspDesc + "\n" + m.GetDescription())
 
 		if m.ReportId != 0 {
 			url, _ := m.GetReportUrl()
