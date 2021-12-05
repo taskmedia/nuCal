@@ -52,7 +52,7 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 
 		eName := fmt.Sprintf("%s (%s %s %s): %s - %s",
 			gsp.AgeCategory.GetAbbreviation(),
-			gsp.Championship,
+			gsp.Championship.GetAbbreviation(),
 			gsp.Class.GetAbbreviation(),
 			gsp.Relay.GetAbbreviation(),
 			m.Team.Home,
@@ -60,13 +60,20 @@ func ConvertGesamtspielplanToCalendar(gsp sport.Gesamtspielplan) *ical.Calendar 
 		)
 
 		// add goals if available
-		if m.Goal.Home != -1 {
+		if m.Goal.Home != 0 {
 			eName += fmt.Sprintf(" (%d:%d)", m.Goal.Home, m.Goal.Guest)
 		}
 		e.SetSummary(eName)
 		e.SetModifiedAt(time.Now())
 		e.SetStartAt(m.Date)
 		e.SetEndAt(m.Date.Add(gameDuration))
+
+		e.SetDescription(gsp.GetDescription() + "\n" + m.GetDescription())
+
+		if m.ReportId != 0 {
+			url, _ := m.GetReportUrl()
+			e.SetURL(url.String())
+		}
 	}
 
 	return c
