@@ -1,12 +1,12 @@
 package rest
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"github.com/taskmedia/nuCal/pkg/calendar"
+	"github.com/taskmedia/nuCal/pkg/persistence"
 	"github.com/taskmedia/nuScrape/pkg/sport"
 )
 
@@ -32,8 +32,18 @@ func addRouterGesamtspielplan(engine *gin.Engine) {
 		}
 
 		cal := calendar.ConvertGesamtspielplanToCalendar(gsp)
-		fmt.Println(cal.Serialize())
 
-		c.String(http.StatusAccepted, "not yet implemented")
+		filename, err := persistence.WriteCalendar(gsp, cal)
+		if err != nil {
+			msg := "Could not write calendar to filesystem"
+			log.WithFields(log.Fields{
+				"gin.context": c,
+				"filename":    filename,
+			}).Warn(msg)
+			c.String(http.StatusInternalServerError, msg)
+			return
+		}
+
+		c.String(http.StatusCreated, "calandar created / updated")
 	})
 }
