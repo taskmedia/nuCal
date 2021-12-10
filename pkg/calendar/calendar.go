@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"time"
 
-	ical "github.com/arran4/golang-ical"
+	ics "github.com/arran4/golang-ical"
 	"github.com/taskmedia/nuScrape/pkg/sport"
 )
 
@@ -16,16 +16,16 @@ var unify, _ = regexp.Compile("[^a-zA-Z0-9]+")
 // func ConvertGesamtspielplanToGroupAndTeamCalendars will return calendars of the whole group and each team
 // A given Gesamtspielplan will be converted to the groups calender which includes every game.
 // Also (second return value) a calendar for each team will be generated.
-func ConvertGesamtspielplanToGroupAndTeamCalendars(gsp sport.Gesamtspielplan) (*ical.Calendar, map[string]*ical.Calendar) {
+func ConvertGesamtspielplanToGroupAndTeamCalendars(gsp sport.Gesamtspielplan) (*ics.Calendar, map[string]*ics.Calendar) {
 	// declare calendar for group and each team
-	calGroup := ical.NewCalendar()
-	calTeams := make(map[string]*ical.Calendar)
+	calGroup := ics.NewCalendar()
+	calTeams := make(map[string]*ics.Calendar)
 
 	// calendars
 	configureGesamptspielplanCalendarGroup(gsp, calGroup)
 	dt := gsp.GetDistinctTeams()
 	for _, team := range dt {
-		calTeams[team] = ical.NewCalendar()
+		calTeams[team] = ics.NewCalendar()
 		configureGesamptspielplanCalendarTeam(gsp, calTeams[team], team)
 	}
 
@@ -45,7 +45,7 @@ func ConvertGesamtspielplanToGroupAndTeamCalendars(gsp sport.Gesamtspielplan) (*
 }
 
 // func createEventFromMatch will create a standardized VEvent to
-func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc string) *ical.VEvent {
+func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc string) *ics.VEvent {
 	// events prerequisites
 	matchDuration := time.Duration(float64(time.Hour) * 1.5)
 
@@ -56,10 +56,10 @@ func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc stri
 		m.Id)
 
 	// create event with uuid
-	e := ical.VEvent{
-		ical.ComponentBase{
-			Properties: []ical.IANAProperty{
-				{ical.BaseProperty{IANAToken: ical.ToText(string(ical.ComponentPropertyUniqueId)), Value: uuid}},
+	e := ics.VEvent{
+		ics.ComponentBase{
+			Properties: []ics.IANAProperty{
+				{ics.BaseProperty{IANAToken: ics.ToText(string(ics.ComponentPropertyUniqueId)), Value: uuid}},
 			},
 		},
 	}
@@ -94,17 +94,17 @@ func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc stri
 }
 
 // func configureGesamptspielplanCalendarGroup is a wrapper for the configuration for group calendars
-func configureGesamptspielplanCalendarGroup(gsp sport.Gesamtspielplan, c *ical.Calendar) {
+func configureGesamptspielplanCalendarGroup(gsp sport.Gesamtspielplan, c *ics.Calendar) {
 	configureGesamptspielplanCalendar(gsp, c, "")
 }
 
 // func configureGesamptspielplanCalendarGroup is a wrapper for the configuration for team calendars
-func configureGesamptspielplanCalendarTeam(gsp sport.Gesamtspielplan, c *ical.Calendar, team string) {
+func configureGesamptspielplanCalendarTeam(gsp sport.Gesamtspielplan, c *ics.Calendar, team string) {
 	configureGesamptspielplanCalendar(gsp, c, team)
 }
 
 // func configureGesamptspielplanCalendar configures a calendar to Gesamtspielplan specifications
-func configureGesamptspielplanCalendar(gsp sport.Gesamtspielplan, c *ical.Calendar, suffix string) {
+func configureGesamptspielplanCalendar(gsp sport.Gesamtspielplan, c *ics.Calendar, suffix string) {
 	// calendar id
 	prodid := fmt.Sprintf("%s-%s-%d",
 		gsp.Season,
@@ -148,5 +148,5 @@ func configureGesamptspielplanCalendar(gsp sport.Gesamtspielplan, c *ical.Calend
 
 	c.SetDescription(desc)
 
-	c.SetMethod(ical.MethodPublish)
+	c.SetMethod(ics.MethodPublish)
 }
