@@ -31,15 +31,15 @@ func addRouterGesamtspielplan(engine *gin.Engine) {
 			return
 		}
 
-		// group calandar
-		calGroup, _ := calendar.ConvertGesamtspielplanToGroupAndTeamCalendars(gsp)
+		// create calendars
+		calGroup, calTeams := calendar.ConvertGesamtspielplanToGroupAndTeamCalendars(gsp)
 
-		filename, err := persistence.WriteCalendar(gsp, calGroup)
+		// persist calendars
+		err := persistence.WriteCalendars(gsp, calGroup, calTeams)
 		if err != nil {
-			msg := "Could not write calendar to filesystem"
+			msg := "Could not write calendars to filesystem"
 			log.WithFields(log.Fields{
 				"gin.context": c,
-				"filename":    filename,
 			}).Warn(msg)
 			c.String(http.StatusInternalServerError, msg)
 			return
