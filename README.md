@@ -31,6 +31,16 @@ Another option would be running the application in a [Docker container](https://
 docker run \
   --name nucal \
   -p 8080:8080 \
+  -v "$(pwd)/cal:/cal:rw" \
+  -e "NUCAL_PATH=/cal" \
   taskmedia/nucal:latest
 ```
 
+## Configuration
+
+The application can be configured with environment variables:
+
+```bash
+# set path where to persist calendars
+NUCAL_PATH="./"
+```
