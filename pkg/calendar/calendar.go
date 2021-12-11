@@ -32,6 +32,11 @@ func ConvertGesamtspielplanToGroupAndTeamCalendars(gsp sport.Gesamtspielplan) (*
 	gspDesc := gsp.GetDescription()
 
 	for _, m := range gsp.Matches {
+		// skip adding match if no date is not available
+		if m.Date.IsZero() {
+			continue
+		}
+
 		// create event
 		e := createEventFromMatch(m, gsp, gspDesc)
 
