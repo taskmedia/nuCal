@@ -41,9 +41,9 @@ func ConvertGesamtspielplanToGroupAndTeamCalendars(gsp sport.Gesamtspielplan) (*
 		e := createEventFromMatch(m, gsp, gspDesc)
 
 		// add event to calendars (group, hometeam, guestteam)
-		calGroup.Components = append(calGroup.Components, e)
-		calTeams[m.Team.Home].Components = append(calTeams[m.Team.Home].Components, e)
-		calTeams[m.Team.Guest].Components = append(calTeams[m.Team.Guest].Components, e)
+		calGroup.AddVEvent(e)
+		calTeams[m.Team.Home].AddVEvent(e)
+		calTeams[m.Team.Guest].AddVEvent(e)
 	}
 
 	return calGroup, calTeams
@@ -61,13 +61,7 @@ func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc stri
 		m.Id)
 
 	// create event with uuid
-	e := ics.VEvent{
-		ics.ComponentBase{
-			Properties: []ics.IANAProperty{
-				{ics.BaseProperty{IANAToken: ics.ToText(string(ics.ComponentPropertyUniqueId)), Value: uuid}},
-			},
-		},
-	}
+	e := ics.NewEvent(uuid)
 
 	summary := fmt.Sprintf("%s (%s %s %s): %s - %s",
 		gsp.AgeCategory.GetAbbreviation(),
@@ -95,7 +89,7 @@ func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc stri
 
 	e.SetModifiedAt(time.Now())
 
-	return &e
+	return e
 }
 
 // func configureGesamptspielplanCalendarGroup is a wrapper for the configuration for group calendars
