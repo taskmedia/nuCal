@@ -7,6 +7,8 @@ github.com/antchfx/xmlquery v1.3.8/go.mod h1:wojC/BxjEkjJt6dPiAqUzoXO5nIMWtxHS8P
 github.com/antchfx/xpath v1.2.0/go.mod h1:i54GszH55fYfBmoZXapTHN8T8tkcHfRgLyVwwqzXNcs=
 github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac h1:O/TDwS98y/3RCIpZKpZyFEnzV1Uc46ZXgrMxpL33b+s=
 github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac/go.mod h1:BSTTrYHuM12oAL8jDdcmPdw02SBThKYWNFHQlvEG6b0=
+github.com/arran4/golang-ical v0.0.0-20211212012649-32b67e209c4f h1:xuC9oI1Cyr7/+q9qJb4PVt7HH+sXLcZVEPgig8b8t8A=
+github.com/arran4/golang-ical v0.0.0-20211212012649-32b67e209c4f/go.mod h1:BSTTrYHuM12oAL8jDdcmPdw02SBThKYWNFHQlvEG6b0=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=

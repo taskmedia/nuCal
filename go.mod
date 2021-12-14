@@ -3,7 +3,7 @@ module github.com/taskmedia/nuCal
 go 1.17
 
 require (
-	github.com/arran4/golang-ical v0.0.0-20210825232153-efac1f4cb8ac
+	github.com/arran4/golang-ical v0.0.0-20211212012649-32b67e209c4f
 	github.com/gin-gonic/gin v1.7.4
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
