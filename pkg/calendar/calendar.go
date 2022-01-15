@@ -78,7 +78,7 @@ func createEventFromMatch(m sport.Match, gsp sport.Gesamtspielplan, gspDesc stri
 	e.SetSummary(summary)
 
 	e.SetStartAt(m.Date)
-	e.SetEndAt(m.Date.Add(matchDuration))
+	e.SetDuration(matchDuration)
 
 	e.SetDescription(gspDesc + "\n" + m.GetDescription())
 
